@@ -17,7 +17,7 @@ struct CharactersView: View {
             List(viewModel.characters) { character in
                 CharacterRow(character: character)
             }
-            .navigationTitle("Rick y Morty Characters")
+            .navigationTitle("Characters")
             .onAppear {
                 viewModel.loadCharacters()
             }
@@ -36,8 +36,6 @@ struct CharacterRow: View {
     var body: some View {
         HStack {
             NavigationLink(destination: CharacterDetailView(character: character)) {
-                
-                // Imagen del personaje
                 AsyncImage(url: URL(string: character.image)) { image in
                     image.resizable()
                 } placeholder: {

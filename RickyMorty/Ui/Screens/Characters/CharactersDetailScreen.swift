@@ -37,9 +37,7 @@ struct CharacterDetailView: View {
 
                     Text("Gender: \(character.gender)")
                         .font(.title3)
-                    
-                    // Aquí puedes añadir más detalles que quieras mostrar
-                }
+                                    }
                 .padding([.leading, .bottom, .trailing])
             }
         }
@@ -47,3 +45,4 @@ struct CharacterDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+

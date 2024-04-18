@@ -7,12 +7,25 @@
 
 import SwiftUI
 
-struct CharacterService: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+class CharacterService {
+    func fetchCharacter(from url: String, completion: @escaping (Character?) -> Void) {
+        guard let url = URL(string: url) else {
+            completion(nil)
+            return
+        }
 
-#Preview {
-    CharacterService()
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            if let character = try? decoder.decode(Character.self, from: data) {
+                completion(character)
+            } else {
+                completion(nil)
+            }
+        }.resume()
+    }
 }
