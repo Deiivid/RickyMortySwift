@@ -54,7 +54,7 @@ struct LocationsView: View {
     
     struct LocationCell: View {
         let location: Location
-        var onTap: () -> Void  // Acción de tap añadida
+        var onTap: () -> Void
 
         var body: some View {
             Button(action: onTap) {
