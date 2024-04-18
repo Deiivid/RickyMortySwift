@@ -11,7 +11,6 @@ import SwiftUI
 struct LocationDetailSheet: View {
     let location: Location
     @State private var characters: [Character] = []
-    private let characterService = CharacterService()
 
     var body: some View {
         ScrollView {
@@ -63,25 +62,11 @@ struct LocationDetailSheet: View {
 
                 Spacer()
             }
-            .onAppear {
-                loadCharacters()
-            }
+            
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.white)
             .cornerRadius(20)
-        }
-    }
-
-    func loadCharacters() {
-        location.residents.forEach { url in
-            characterService.fetchCharacter(from: url) { character in
-                if let character = character {
-                    DispatchQueue.main.async {
-                        self.characters.append(character)
-                    }
-                }
-            }
         }
     }
 }

@@ -1,22 +1,19 @@
 //
-//  CharactersUsecase.swift
+//  EpisodesUsecase.swift
 //  RickyMorty
 //
 //  Created by David Navarro Moreno on 18/4/24.
 //
 
 import Foundation
-
-
-class CharactersUsecase {
+class EpisodesUsecase {
     private let service: RickyMortyService
 
     init(service: RickyMortyService) {
         self.service = service
     }
 
-    func execute(completion: @escaping ([Character]?, Error?) -> Void) {
-        service.getCharacters(completion: completion)
+    func execute(completion: @escaping ([Episode]?, Error?) -> Void) {
+        service.getEpisodes(completion:completion)
     }
-    
 }

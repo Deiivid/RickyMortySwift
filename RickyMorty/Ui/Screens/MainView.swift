@@ -19,6 +19,12 @@ struct MainView: View {
                 .tabItem {
                     Label("Localizaciones", systemImage: "map.fill")
                 }
+            
+            EpisodesView()
+                           .tabItem {
+                               Label("Episodios", systemImage: "tv.fill")
+                           }
+
         }
     }
 }
